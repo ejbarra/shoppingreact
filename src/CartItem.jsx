@@ -40,6 +40,8 @@ const CartItem = ({ onContinueShopping }) => {
     return (itemCost * itemQuantity).toFixed(2);
   };
 
+
+
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
@@ -65,7 +67,8 @@ const CartItem = ({ onContinueShopping }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={onContinueShopping}>Continue Shopping</button>
         <br />
-        <button className="get-started-button">Checkout</button>
+        <button className="get-started-button" onClick={onContinueShopping}>Check out</button>
+        
       </div>
     </div>
   );
