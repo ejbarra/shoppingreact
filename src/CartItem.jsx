@@ -40,7 +40,9 @@ const CartItem = ({ onContinueShopping }) => {
     return (itemCost * itemQuantity).toFixed(2);
   };
 
-
+  const showComingSoonMessage = () => {
+    alert("Coming Soon");
+  };
 
   return (
     <div className="cart-container">
@@ -67,7 +69,7 @@ const CartItem = ({ onContinueShopping }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={onContinueShopping}>Continue Shopping</button>
         <br />
-        <button className="get-started-button" onClick={onContinueShopping}>Check out</button>
+                <button className="get-started-button1" onClick={showComingSoonMessage}>Check out</button>
         
       </div>
     </div>
