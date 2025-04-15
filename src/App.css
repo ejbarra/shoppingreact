@@ -43,7 +43,7 @@
   z-index: 1;
   text-align: center;
   /* background-color: red; */
-  width: 400px;
+  width: 300px;
   height: 400px;
   display: flex;
   align-items: center;
@@ -125,7 +125,7 @@
   .landing_content {
     margin-top: 100px; /* Adjust as needed */
     margin-left: 0;
-    width: 80%; /* Adjust as needed */
+    width: 95%; /* Adjust as needed */
     text-align: center;
   }
 
