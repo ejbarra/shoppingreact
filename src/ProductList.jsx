@@ -1,14 +1,28 @@
-import React, { useState,useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './ProductList.css'
 import { addItem } from './CartSlice';
 import CartItem from './CartItem';
+
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
-    const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    const [showPlants, setShowPlants] = useState(false);
     const [addedToCart, setAddedToCart] = useState({});
-    const [cartCount, setCartCount] = useState(0);
+
     const dispatch = useDispatch();
+    
+    const cartItems = useSelector(state => state.cart.items);
+
+    const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    useEffect(() => {
+        const newAddedToCart = {};
+        cartItems.forEach(item => {
+            newAddedToCart[item.name] = true;
+        });
+
+        setAddedToCart(newAddedToCart);
+    }, [cartItems]);
+
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -216,42 +230,65 @@ function ProductList() {
             ]
         }
     ];
-   const styleObj={
-    backgroundColor: '#4CAF50',
-    color: '#fff!important',
-    padding: '15px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    fontSize: '20px',
-   }
-   const styleObjUl={
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '1100px',
-   }
-   const styleA={
-    color: 'white',
-    fontSize: '30px',
-    textDecoration: 'none',
-   }
+    const styleObj={
+        backgroundColor: '#4CAF50',
+        color: '#fff!important',
+        padding: '15px 20px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        fontSize: '20px',
+       }
+       
+       const styleObjUl={
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: '1100px',
+       }
+       
+       const styleA={
+        color: 'white',
+        fontSize: '30px',
+        textDecoration: 'none',
+       }
+       
+       // Estilo específico para el ícono del carrito
+       const cartIconStyle = {
+        position: 'relative',
+        display: 'inline-block'
+       }
+       
+       // Estilo para el contador del carrito directamente en el JSX
+       const cartCountStyle = {
+        position: 'absolute',
+        top: '0px',
+        right: '15px',
+        backgroundColor: 'red',
+        color: 'white',
+        borderRadius: '50%',
+        padding: '4px 8px',
+        fontSize: '18px',
+        fontWeight: 'bold',
+        minWidth: '24px',
+        minHeight: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+        zIndex: 10
+       }
    const handleCartClick = (e) => {
     e.preventDefault();
-    setShowCart(true); // Set showCart to true when cart icon is clicked
+    setShowCart(true);
 };
 const handlePlantsClick = (e) => {
     e.preventDefault();
-    setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
-    setShowCart(false); // Hide the cart when navigating to About Us
+    setShowPlants(true);
+    setShowCart(false);
 };
 const handleAddToCart = (product) => {
-  dispatch(addItem(product));
-  setAddedToCart((prevState) => ({
-     ...prevState,
-     [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
-   }));
-   setCartCount(cartCount + 1);
+    dispatch(addItem(product));
 };
    const handleContinueShopping = (e) => {
     e.preventDefault();
