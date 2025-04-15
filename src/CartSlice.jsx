@@ -22,7 +22,7 @@ export const CartSlice = createSlice({
     },
     clearItem(state) {
       state.items = []
-    }
+    },
     updateQuantity: (state, action) => {
 
     const { name, quantity} = action.payload;
