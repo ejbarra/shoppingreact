@@ -18,6 +18,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleRemove = (item) => {
+
     dispatch(removeItem(item.name)); 
   };
 
@@ -68,8 +69,8 @@ const CartItem = ({ onContinueShopping }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={onContinueShopping}>Continue Shopping</button>
         <br />
-                <button className="get-started-button1" onClick={showComingSoonMessage}>Check out</button>
-        
+        <button className="get-started-button1" onClick={showComingSoonMessage}>Check out</button>
+
       </div>
     </div>
   );
