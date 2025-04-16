@@ -19,6 +19,9 @@ body {
     justify-content: space-between;
     align-items: center;
     font-size: 20px;
+    /* Agregamos padding a los lados para que no quede pegado a los bordes */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .navbar .ul {
@@ -38,22 +41,32 @@ body {
     text-decoration: none;
    
 }
-.cart-icon-container {
-    position: relative;
-    display: inline-block;
+
+.cart {
+    color: white;
+    display: flex;
+    position: relative; /* Mantenemos posición relativa para posicionar el contador */
 }
 
 .cart-count {
     position: absolute;
-    top: 5px;
-    right: 10px;
+    top: 0px; /* Ajustamos para que quede visible sobre el carrito */
+    right: 15px; /* Centramos más sobre el carrito */
     background-color: red;
     color: white;
     border-radius: 50%;
     padding: 4px 8px;
-    font-size: 16px;
+    font-size: 18px; /* Aumentamos tamaño de fuente */
     font-weight: bold;
+    min-width: 24px; /* Tamaño mínimo para asegurar visibilidad */
+    min-height: 24px; /* Tamaño mínimo para asegurar visibilidad */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra suave para destacar */
+    z-index: 10; /* Aseguramos que esté por encima */
 }
+
 /* Product Grid */
 .product-grid {
     display:flex;
@@ -61,7 +74,12 @@ body {
     width: 100vw;
     align-items: center;
     justify-content: center;
+    /* Agregamos márgenes a los lados */
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
+
 .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -86,7 +104,6 @@ body {
     border-radius: 5px;
     text-align: center;
     position: relative;
-    
     gap: 20px;
 }
 
@@ -138,6 +155,7 @@ body {
     padding: 5px 10px;
     border-radius: 0 0 0 5px;
 }
+
 .tag_home_link{
     display: flex;
     background-color: red;
@@ -149,12 +167,15 @@ body {
     text-decoration: none;
     font-size: 20px;
 }
+
 .tag_home_link h3{
     font-size: 30px;
 }
+
 .tag a{
     text-decoration: none;
 }
+
 .tag {
     width: 400px;
     display: flex;
@@ -166,7 +187,6 @@ body {
     height: 70px;
     width: 70px;
     border-radius: 70%;
-    
 }
 
 .luxury {
@@ -175,25 +195,25 @@ body {
     justify-content: center;
     width: 650px;
     font-size: 19px;
+    /* Añadir margen a la izquierda para que no quede pegado al borde */
+    margin-left: 10px;
 }
-.cart{
-    color: white;
-    display: flex;
-}
+
 .cart_quantity_count{
     margin-top: 16px;
     background-color: red;
     margin-left: 27px;
     position: absolute;
     font-size: 29px;
-
 }
+
 .plantname_heading{
    display: flex;
    align-items: center;
    justify-content: center;
     background-color: yellow;
 }
+
 .plant_heading{
     width: 400px;
     text-align: center;
@@ -201,16 +221,8 @@ body {
     border: 1px solid rgb(5, 4, 4);
     border-left: none;
     border-right: none;
+}
 
-    
-}
-/* Add Media Query for responsiveness */
-@media (max-width: 768px) {
-    .product-card {
-        flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on smaller screens */
-        max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
-    }
-}
 /* ProductList.css */
 
 .product-button {
@@ -225,44 +237,64 @@ body {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-  }
+}
   
-  .product-button:hover {
+.product-button:hover {
     background-color: #45a049;
-  }
+}
   
-  .product-button.added-to-cart {
+.product-button.added-to-cart {
     background-color: grey; /* Grey when product is added */
-  }
-  @media (max-width: 1200px) {
+}
+
+.product-button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* Estilos para títulos de categorías */
+.product-grid h1 {
+    margin: 20px 0;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Add Media Query for responsiveness */
+@media (max-width: 1200px) {
     .product-card {
-      flex: 1 1 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap on medium screens */
-      max-width: calc(33.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap on medium screens */
+        flex: 1 1 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap on medium screens */
+        max-width: calc(33.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap on medium screens */
     }
-  }
+}
   
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .product-card {
-      flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on small screens */
-      max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on small screens */
+        flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on small screens */
+        max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on small screens */
     }
+    
     .navbar {
         flex-direction: column; /* Change flex direction to stack items vertically */
         align-items: center; /* Align items to the center of the container */
-      }
+    }
     
-      .tag {
+    .tag {
         margin-bottom: 20px; /* Add margin bottom for spacing */
         text-align: center; /* Align text to the center */
-      }
+    }
     
-      .ul {
+    .ul {
         display: flex; /* Set display to flex */
         flex-direction: column; /* Change flex direction to stack items vertically */
         gap: 10px; /* Add gap between items */
-      }
+    }
     
-      .ul div {
+    .ul div {
         text-align: center; /* Align text to the center */
-      }
-  }
+    }
+}
